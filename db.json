@@ -1,0 +1,12 @@
+{
+  "posts": [
+    { "id": 1, "title": "Getting Started with React", "body": "React is a JavaScript library for building user interfaces. Learn more at react.dev." },
+    { "id": 2, "title": "Understanding TanStack Query", "body": "TanStack Query makes fetching, caching, synchronizing and updating server state in your React applications a breeze." },
+    { "id": 3, "title": "State Management with Zustand", "body": "Zustand is a small, fast and scalable barebones state-management solution using simplified flux principles." }
+  ],
+  "comments": [
+    { "id": 1, "postId": 1, "body": "Great introduction!" },
+    { "id": 2, "postId": 1, "body": "I'm excited to learn more." },
+    { "id": 3, "postId": 2, "body": "This is so helpful for data fetching." }
+  ]
+}
