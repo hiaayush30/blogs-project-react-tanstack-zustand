@@ -32,6 +32,7 @@ function CreatePost() {
                     <input value={title} onChange={e => setTitle(e.target.value)} className='outline-1 rounded-lg p-1' placeholder='Blog Title' type='text' />
                     <textarea value={body} onChange={e => setBody(e.target.value)} className='outline-1 p-1 rounded-lg' placeholder='Blog goes here...' />
                     <button
+                        disabled={createPostMutation.isPending}
                         className='bg-stone-300 p-1 rounded-lg hover:bg-stone-200 cursor-pointer'
                         type='submit'>
                         {createPostMutation.isPending ? "Creating..." : "Create"}

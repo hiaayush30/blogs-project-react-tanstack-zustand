@@ -25,7 +25,10 @@ const PostDetailPage: React.FC = () => {
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-3xl font-bold mb-4">{data?.title}</h1>
-            <Link to={"/"} className="font-semibold">Back to posts</Link>
+            <div className="my-3 flex items-center justify-center gap-3">
+                <Link to={"/"} className="border-2 p-1 rounded-lg font-semibold">Back to posts</Link>
+                <Link to={"/posts/edit/" + data?.id} className="border-2 p-1 rounded-lg font-semibold">Edit Post</Link>
+            </div>
             <p> {data?.body}</p>
         </div>
     )

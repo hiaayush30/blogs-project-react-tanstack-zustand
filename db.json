@@ -2,8 +2,8 @@
   "posts": [
     {
       "id": "1",
-      "title": "Getting Started with React",
-      "body": "React is a JavaScript library for building user interfaces. Learn more at react.dev."
+      "title": "Getting Started with React fr",
+      "body": "React :-) is a JavaScript library for building user interfaces. Learn more at react.dev."
     },
     {
       "id": "2",
@@ -14,26 +14,6 @@
       "id": "3",
       "title": "State Management with Zustand",
       "body": "Zustand is a small, fast and scalable barebones state-management solution using simplified flux principles."
-    },
-    {
-      "id": "8699",
-      "title": "New Blog",
-      "body": "A very new blog"
-    },
-    {
-      "id": "1913",
-      "title": "jhefdvce",
-      "body": "ewrvbjkerwbvne"
-    },
-    {
-      "id": "aa4b",
-      "title": "fgnbt",
-      "body": "gnrft"
-    },
-    {
-      "id": "3a2a",
-      "title": "b dcxfb",
-      "body": "dfb frd"
     }
   ],
   "comments": [
