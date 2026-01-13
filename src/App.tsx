@@ -12,6 +12,7 @@ function App() {
         <Route path="/posts/:id" element={<PostDetailPage />} />
         <Route path="/posts/new" element={<CreatePost />} />
         <Route path="/posts/edit/:id" element={<EditPost />} />
+        <Route path="*" element={<div>Custom Error Page</div>} />
       </Routes>
     </Router>
   );

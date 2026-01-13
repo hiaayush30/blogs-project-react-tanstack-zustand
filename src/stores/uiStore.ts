@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from 'zustand/middleware'; 
 
 
 interface UiState {
@@ -6,7 +7,13 @@ interface UiState {
     toggleSidebar: () => void;
 }
 
-export const useUiStore = create<UiState>((set) => ({
-    isSidebarOpen: false,
-    toggleSidebar: () => set((state) => ({ isSidebarOpen: !state.isSidebarOpen }))
-}))
+export const useUiStore = create<UiState>()(
+    persist(
+        (set) => ({
+            isSidebarOpen: false,
+            toggleSidebar: () => set((state) => ({ isSidebarOpen: !state.isSidebarOpen }))
+        })
+        ,{
+            name:"ui-storage" // name of item in localstorage
+        }
+    ))
