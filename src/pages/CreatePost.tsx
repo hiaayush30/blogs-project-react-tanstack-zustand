@@ -14,6 +14,9 @@ function CreatePost() {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["posts"] }) // Invalidate the posts query to refetch the list
             navigate("/") // Redirect to the homepage
+        },
+        onError: (err) => {
+            alert(err.message)
         }
     })
 
@@ -28,7 +31,11 @@ function CreatePost() {
                 <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center gap-3'>
                     <input value={title} onChange={e => setTitle(e.target.value)} className='outline-1 rounded-lg p-1' placeholder='Blog Title' type='text' />
                     <textarea value={body} onChange={e => setBody(e.target.value)} className='outline-1 p-1 rounded-lg' placeholder='Blog goes here...' />
-                        <button type='submit' className='p-1 bg-stone-300 hover:bg-stone-200 border-2 border-stone-800 rounded-lg'>Create</button>
+                    <button
+                        className='bg-stone-300 p-1 rounded-lg hover:bg-stone-200 cursor-pointer'
+                        type='submit'>
+                        {createPostMutation.isPending ? "Creating..." : "Create"}
+                    </button>
                 </form>
             </div>
         </div>
