@@ -7,7 +7,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/posts/:postId" element={<PostDetailPage />} />
+        <Route path="/posts/:id" element={<PostDetailPage />} />
       </Routes>
     </Router>
   );

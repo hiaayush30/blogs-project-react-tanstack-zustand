@@ -1,13 +1,32 @@
 import type React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import type { Post } from "@/types";
+import { getPostById } from "@/services/postService";
 
 const PostDetailPage: React.FC = () => {
-    const { postId } = useParams<{ postId: string }>();
+    const { id } = useParams<{ id: string }>();
+    const postId = Number(id);
+
+    const { data, isLoading, isError } = useQuery<Post>({
+        queryKey: ["post", postId],
+        queryFn: () => getPostById(postId),
+        enabled: !isNaN(postId)  // Only run the query if postId is a number
+    })
+
+    if (isLoading) {
+        return <span>Loading...</span>;
+    }
+
+    if (isError) {
+        return <span>Error fetching post</span>;
+    }
+
     return (
-        <div className="container mx-auto p4">
-            <h1 className="text-3xl font-bold mb-4">Post Detail Page</h1>
-            <p>Displaying details for post id {postId}</p>
-            <p>This page will show full post content and comments</p>
+        <div className="container mx-auto p-4">
+            <h1 className="text-3xl font-bold mb-4">{data?.title}</h1>
+            <Link to={"/"} className="font-semibold">Back to posts</Link>
+            <p> {data?.body}</p>
         </div>
     )
 }
