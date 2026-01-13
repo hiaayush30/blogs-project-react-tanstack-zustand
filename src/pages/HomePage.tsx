@@ -3,13 +3,17 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { deletePostById, getPosts } from '@/services/postService'
 import type { Post } from '@/types'
 import { Link } from 'react-router-dom'
+import { useUiStore } from '@/stores/uiStore'
 
 const HomePage: React.FC = () => {
+    const { toggleSidebar, isSidebarOpen } = useUiStore();
+
     const { data, isLoading, isError } = useQuery<Post[]>({
         queryKey: ["posts"],
         queryFn: getPosts
     })
 
+    // Handle delete Post functionality
     const queryClient = useQueryClient();
     const deletePostMutation = useMutation({
         mutationFn: deletePostById,
@@ -31,8 +35,16 @@ const HomePage: React.FC = () => {
                 <h1 className='text-3xl font-bold mb-4'>Welcome to the blog App!</h1>
                 <div className='flex items-center justify-between'>
                     <p className='text-2xl font-semibold my-3'>Blog Posts</p>
+                    <button
+                        onClick={toggleSidebar}
+                        className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 mr-2"
+                    >
+                        Toggle Sidebar (Zustand)
+                    </button>
+
                     <Link to={"/posts/new"} className='bg-stone-300 p-1 rounded-lg border-2 hover:bg-stone-200 border-stone-800'>Create Post</Link>
                 </div>
+                <p className="mb-4">Sidebar is: {isSidebarOpen ? "Open" : "Closed"}</p>
                 {
                     isLoading ? (
                         <div>
@@ -65,7 +77,7 @@ const HomePage: React.FC = () => {
                     )
                 }
             </div>
-        </div>
+        </div >
     )
 }
 
